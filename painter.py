@@ -15,12 +15,12 @@ import torch
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
+
 class PainterBase():
     def __init__(self, args):
         self.args = args
 
-        self.rderr = renderer.Renderer(renderer=args.renderer,
-                                       CANVAS_WIDTH=args.canvas_size, canvas_color=args.canvas_color)
+        self.rderr = renderer.Renderer(renderer=args.renderer,CANVAS_WIDTH=args.canvas_size, canvas_color=args.canvas_color)
 
         # define G
         self.net_G = define_G(rdrr=self.rderr, netG=args.net_G).to(device)
@@ -109,7 +109,7 @@ class PainterBase():
 
         return v
 
-    def _render(self, v, save_jpgs=True, save_video=True):
+    def _render(self, v, save_jpgs=False, save_video=False):
 
         v = v[0,:,:]
         if self.args.keep_aspect_ratio:
@@ -151,9 +151,8 @@ class PainterBase():
             plt.imsave(file_name + '_input.png', out_img)
 
         final_rendered_image = np.copy(this_frame)
-        if save_jpgs:
-            print('saving final rendered result...')
-            plt.imsave(file_name + '_final.png', final_rendered_image)
+        print('saving final rendered result...')
+        plt.imsave(file_name + '_final.png', final_rendered_image)
 
         return final_rendered_image
 

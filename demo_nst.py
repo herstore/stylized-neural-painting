@@ -10,7 +10,7 @@ parser.add_argument('--renderer', type=str, default='oilpaintbrush', metavar='st
                     help='renderer: [watercolor, markerpen, oilpaintbrush, rectangle (default oilpaintbrush)')
 parser.add_argument('--vector_file', type=str, default='./output/sunflowers_strokes.npz', metavar='str',
                     help='path to pre-generated stroke vector file (default: ...)')
-parser.add_argument('--style_img_path', type=str, default='./style_images/fire.jpg', metavar='str',
+parser.add_argument('--style_img_path', type=str, default='./style_images/scream.jpg', metavar='str',
                     help='path to style image (default: ...)')
 parser.add_argument('--content_img_path', type=str, default='./test_images/sunflowers.jpg', metavar='str',
                     help='path to content image (default: ...)')
